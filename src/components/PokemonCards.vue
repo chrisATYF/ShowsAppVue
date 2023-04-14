@@ -51,11 +51,6 @@
     font-size: 10px;
 }
 
-.jobs {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .button-container {
     display: flex;
     justify-content: center;
@@ -69,11 +64,5 @@
     border-radius: 100%;
     margin: 0 5px;
     cursor: pointer;
-}
-
-.spinner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 </style>

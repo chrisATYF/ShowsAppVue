@@ -1,9 +1,9 @@
 <script setup>
     import axios from 'axios';
-    import { defineProps, ref, watch } from 'vue';
+    import { defineProps, ref } from 'vue';
 
     const pokeAbilities = ref(null);
-    const pokeSprites = ref(null);
+    const image = ref(null);
     const { name, url } = defineProps([
         'name',
         'url'
@@ -11,18 +11,16 @@
 
     const response = await axios.get(url);
     pokeAbilities.value = response.data.abilities;
-    pokeSprites.value = response.data.sprites.front_default;
-
-    console.log(pokeSprites.value)
+    image.value = response.data.sprites.front_default;
 </script>
 
 <template>
     <n-card>
     <template #cover>
-        <img :src="pokeSprites">
+        <img :src="image">
     </template>
     <h3>{{ name }}</h3>
-    <div class="jobs" v-for="abilities in pokeAbilities">
+    <div class="ability" v-for="abilities in pokeAbilities">
         <p v-for="ability in abilities">{{ability.name}}</p>
     </div>
   </n-card>
@@ -41,7 +39,7 @@ p {
     font-size: 10px;
 }
 
-.jobs {
+.ability {
     display: flex;
     flex-wrap: wrap;
 }
